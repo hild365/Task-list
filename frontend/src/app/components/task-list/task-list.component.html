@@ -1,0 +1,21 @@
+<!-- src/app/components/task-list/task-list.component.html -->
+<div>
+    <h1>Liste des tâches</h1>
+    <form (submit)="addTask()">
+      <input type="text" placeholder="Titre" [(ngModel)]="newTask.title" name="title" required >
+      <input type="text" placeholder="Catégorie" [(ngModel)]="newTask.category" name="category" >
+      <input type="date" [(ngModel)]="newTask.due_date" name="due_date" >
+      <button type="submit">Ajouter</button>
+    </form>
+    <ul>
+      @for(task of tasks; track task.id){
+      <li>
+        <span [class.completed]="task.completed">{{ task.title }}</span>
+        <button (click)="toggleCompletion(task.id)">✔</button>
+        <button (click)="deleteTask(task.id)">🗑</button>
+      </li>
+      }
+
+    </ul>
+  </div>
+  
